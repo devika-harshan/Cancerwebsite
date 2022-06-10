@@ -52,9 +52,6 @@ class RegisterForm(FlaskForm):
     password = PasswordField('Password', validators=[InputRequired(), Length(min=8, max=80)])
 
 
-@app.route('/')
-def index():
-    return render_template("index.html")
 
 
 @app.route('/about')
@@ -86,7 +83,7 @@ def login():
     return render_template("login.html", form=form)
 
 
-@app.route('/signup', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def signup():
     form = RegisterForm()
     if form.validate_on_submit():
